@@ -13,16 +13,17 @@ public class WeatherDataModel {
     public static WeatherDataModel fromJson(JSONObject jsonObject) {
 
         try {
+
             WeatherDataModel weatherData = new WeatherDataModel();
             weatherData.mCity = jsonObject.getString("name");
             weatherData.mCondition = jsonObject.getJSONArray("weather").getJSONObject(0).getInt("id");
             weatherData.mIconName = updateWeatherIcon(weatherData.mCondition);
 
             //double tempResult = (jsonObject.getJSONObject("main").getDouble("temp") - 273.15)*9.0/5.0 + 32;
-            double tempResult = (jsonObject.getJSONObject("main").getDouble("temp") - 273.15);
+            /*double tempResult = (jsonObject.getJSONObject("main").getDouble("temp") - 273.15);
             int roundedValue = (int) Math.rint(tempResult);
 
-            weatherData.mTemperature = Integer.toString(roundedValue);
+            weatherData.mTemperature = Integer.toString(roundedValue);*/
 
             weatherData.mTemperature = (jsonObject.getJSONObject("main").getString("temp") );
 
